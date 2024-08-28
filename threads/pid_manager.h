@@ -1,5 +1,6 @@
 #if !defined(__PID_MANGER_H__)
 #define __PID_MANGER_H__
+#define _GNU_SOURCE
 
 // Crea e inizializza una struttura per rappresentare i pid;
 // restituisce -1 in caso di insuccesso e 1 in caso di successo.

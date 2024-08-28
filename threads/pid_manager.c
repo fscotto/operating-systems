@@ -34,7 +34,7 @@ void release_pid(int pid) {
 
 int main(void) {
   if (allocate_map() != 1) {
-    perror("Failed to initialiaze PID Manager\n");
+    perror("Failed to initialize PID Manager\n");
     exit(1);
   }
 
