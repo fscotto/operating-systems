@@ -1,7 +1,6 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 #define ROUNDUP(a, b) (a + b - 1) / b
 
@@ -68,27 +67,11 @@ int main(int argc, char *argv[]) {
   return EXIT_SUCCESS;
 }
 
-void swap(int *array, int a, int b) {
-  int tmp = array[a];
-  array[a] = array[b];
-  array[b] = tmp;
-}
-
-void selection_sort(int *arr, int size) {
-  for (int i = 0; i < size - 1; i++) {
-    int min_idx = i;
-    for (int j = i + 1; j < size; j++) {
-      if (arr[j] < arr[min_idx]) {
-        min_idx = j;
-      }
-    }
-    swap(arr, min_idx, i);
-  }
-}
+int compare(const void *a, const void *b) { return (*(int *)a) - *((int *)b); }
 
 void *sort(void *args) {
   const thread_data_t *tdata = (thread_data_t *)args;
-  selection_sort(tdata->array, tdata->size);
+  qsort(tdata->array, tdata->size, sizeof(int), compare);
   pthread_exit(0);
 }
 
@@ -103,6 +86,6 @@ void *merge(void *args) {
   for (int i = tdata1.size; i < size; i++) {
     sorted_array[i] = tdata2.array[i - tdata1.size];
   }
-  selection_sort(sorted_array, size);
+  qsort(sorted_array, size, sizeof(int), compare);
   pthread_exit(0);
 }
