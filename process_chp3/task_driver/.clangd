@@ -1,0 +1,10 @@
+CompileFlags:
+  Compiler: make
+  Add: [-Wall, -I/lib/modules/6.10.7-200.fc40.x86_64/build/include]
+InlayHints:
+  BlockEnd: false
+  Designators: true
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  TypeNameLimit: 24
