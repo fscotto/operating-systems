@@ -46,13 +46,13 @@ int main(void) {
       if (nth_command(raw, history_count) != -1) {
         printf("%s\n", raw);
       } else {
-        printf("History is empty\n");
+        fprintf(stderr, "History is empty\n");
         continue;
       }
     } else if ((c = strchr(raw, '!')) != NULL) {
       const int n = digits(c);
       if (nth_command(raw, n) != -1) {
-        printf("%s\n", raw);
+        fprintf(stderr, "%s\n", raw);
       } else {
         printf("Command not found in position %d\n", n);
         continue;
