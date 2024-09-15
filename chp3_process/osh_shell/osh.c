@@ -52,9 +52,9 @@ int main(void) {
     } else if ((c = strchr(raw, '!')) != NULL) {
       const int n = digits(c);
       if (nth_command(raw, n) != -1) {
-        fprintf(stderr, "%s\n", raw);
+        printf("%s\n", raw);
       } else {
-        printf("Command not found in position %d\n", n);
+        fprintf(stderr, "Command not found in position %d\n", n);
         continue;
       }
     }
